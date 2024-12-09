@@ -72,7 +72,7 @@ const ProductForm = () => {
       ...data,
       id: products.length + 1,
       price: Number(data.price),
-      image: "no-image.png",
+      image: "/Electronics-store/no-image.png",
     };
 
     dispatch(addItem(output));
