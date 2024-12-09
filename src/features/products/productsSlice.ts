@@ -13,7 +13,7 @@ export interface Product {
 interface ProductsState {
   items: Product[];
   wishlistItems: Product[];
-  status: "idle" | "loading" | "error";
+  status: "idle" | "loading" | "succeeded" | "error";
 }
 
 const initialState: ProductsState = {
@@ -69,8 +69,8 @@ const productsSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.status = "idle";
+        state.items = state.items.concat(action.payload);
+        state.status = "succeeded";
       })
       .addCase(fetchProducts.rejected, (state) => {
         state.status = "error";

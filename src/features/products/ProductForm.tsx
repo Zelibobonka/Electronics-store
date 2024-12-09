@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import { addItem } from "./productsSlice";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
@@ -64,13 +62,12 @@ interface FormData {
 
 const ProductForm = () => {
   const dispatch = useAppDispatch();
-  const { items: products } = useSelector((state: RootState) => state.products);
   const { register, handleSubmit, reset, formState } = useForm<FormData>();
   const { errors } = formState;
   const onSubmit = handleSubmit((data) => {
     const output = {
       ...data,
-      id: products.length + 1,
+      id: Math.random(),
       price: Number(data.price),
       image: "/Electronics-store/no-image.png",
     };

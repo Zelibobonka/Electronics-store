@@ -54,10 +54,10 @@ const Products = () => {
   );
 
   useEffect(() => {
-    if (!products.length) {
+    if (status === "idle" || status === "error") {
       dispatch(fetchProducts());
     }
-  }, [dispatch, products]);
+  }, [dispatch, status]);
 
   if (status === "loading") return <Spinner />;
 
