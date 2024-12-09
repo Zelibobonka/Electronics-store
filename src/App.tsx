@@ -7,30 +7,35 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
 import CreateProductPage from "./pages/CreateProductPage";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
+        {
+          path: "products",
+          element: <ProductsPage />,
+        },
+        {
+          path: "products/:productId",
+          element: <ProductPage />,
+        },
+        {
+          path: "create-product",
+          element: <CreateProductPage />,
+        },
+      ],
+    },
+  ],
   {
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <HomePage />,
-      },
-      {
-        path: "products",
-        element: <ProductsPage />,
-      },
-      {
-        path: "products/:productId",
-        element: <ProductPage />,
-      },
-      {
-        path: "create-product",
-        element: <CreateProductPage />,
-      },
-    ],
-  },
-]);
+    basename: "/Electronics-store/",
+  }
+);
 
 function App() {
   return (

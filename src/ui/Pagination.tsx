@@ -10,6 +10,7 @@ const StyledPagination = styled.div`
   justify-content: space-between;
   gap: 0.5rem 2rem;
   flex-wrap: wrap;
+  margin: 2rem 0 1rem;
 `;
 
 const P = styled.p`
